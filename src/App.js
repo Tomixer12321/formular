@@ -2,9 +2,10 @@ import { useState } from "react";
 
 const App = () => {
   const [firstName, setFirstName] = useState("");
+
   const forSubmit = (event) => {
     event.preventDefault();
-    console.log("form");
+    console.log(firstName)
   };
 
   return (
@@ -15,6 +16,7 @@ const App = () => {
           type="text"
           placeholder="jmeno"
           value={firstName}
+          onChange={(event)=> setFirstName(event.target.value)}
         />
         <input type="submit" />
       </form>
