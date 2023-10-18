@@ -17,6 +17,7 @@ const App = () => {
       console.log("napis neco")
     }
 
+    setFirstName("")
   };
 
   return (
@@ -32,7 +33,7 @@ const App = () => {
         <input type="submit" />
       </form>
       {names.map((onenames,index)=>{
-          return <p key={index}>{onenames}</p>
+          return <p className="item" key={index}>{onenames}</p>
       })}
 
     </article>
