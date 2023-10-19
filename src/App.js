@@ -1,5 +1,14 @@
 import { useState } from "react";
 
+ const names=["david","martin"]
+ const names2=["jana","pavla"]
+ const newarray1=names.concat(names2)
+ console.log(newarray1)
+ const newarray2=[...names,...names2]
+ newarray2.push("teodor")
+ console.log(newarray2)
+
+
 
 const App = () => {
   const [firstName, setFirstName] = useState("");
