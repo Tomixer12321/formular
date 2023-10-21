@@ -1,25 +1,31 @@
 import { useState } from "react";
 
 const App = () => {
-  const [fullName, setFullName] = useState("");
-  const [email, setEmail] = useState("");
-  const [age, setAge] = useState("");
+  const [oneUser, setOneUser] = useState({ fullName: "", email: "", age: "" });
   const [users, setUsers] = useState([]);
+
+  const formChange = (event) => {
+    const name = event.target.name;
+    const value = event.target.value;
+
+    setOneUser({ ...oneUser, [name]: value });
+  };
 
   const formSubmit = (event) => {
     event.preventDefault();
 
-    if (fullName && email) {
-      const oneUser = { fullName: fullName, email: email, age: age };
+    if (oneUser.fullName && oneUser.email && oneUser.age) {
+      const newUser = {
+        fullName: oneUser.fullName,
+        email: oneUser.email,
+        age: oneUser.age,
+      };
       setUsers((users) => {
-        return [...users, oneUser];
+        return [...users, newUser];
       });
     } else {
       console.log("napis neco");
     }
-    setFullName("");
-    setEmail("");
-    setAge("");
   };
 
   return (
@@ -29,22 +35,25 @@ const App = () => {
           className="userinfo"
           type="text"
           placeholder="jmeno"
-          value={fullName}
-          onChange={(event) => setFullName(event.target.value)}
+          value={oneUser.fullName}
+          onChange={formChange}
+          name="fullName"
         />
         <input
           className="userinfo"
           type="email"
           placeholder="email"
-          value={email}
-          onChange={(event) => setEmail(event.target.value)}
+          value={oneUser.email}
+          onChange={formChange}
+          name="email"
         />
         <input
           className="userinfo"
           type="text"
           placeholder="vek"
-          value={age}
-          onChange={(event) => setAge(event.target.value)}
+          value={oneUser.age}
+          onChange={formChange}
+          name="age"
         />
         <input type="submit" />
       </form>
