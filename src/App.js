@@ -23,6 +23,7 @@ const App = () => {
       setUsers((users) => {
         return [...users, newUser];
       });
+      setOneUser({fullName: "", email: "", age: ""})
     } else {
       console.log("napis neco");
     }
