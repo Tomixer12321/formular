@@ -8,16 +8,16 @@ const App = () => {
   const formSubmit = (event) => {
     event.preventDefault();
 
-    if(fullName && email){
-      const oneUser={fullName:fullName, email:email}
-      setUsers((users)=>{
-        return [...users,oneUser]
-      })
-    }else{
-      console.log("napis neco")
+    if (fullName && email) {
+      const oneUser = { fullName: fullName, email: email };
+      setUsers((users) => {
+        return [...users, oneUser];
+      });
+    } else {
+      console.log("napis neco");
     }
-    setFullName("")
-    setEmail("")
+    setFullName("");
+    setEmail("");
   };
 
   return (
@@ -28,17 +28,24 @@ const App = () => {
           type="text"
           placeholder="jmeno"
           value={fullName}
-          onChange={(event)=>setFullName(event.target.value)}
+          onChange={(event) => setFullName(event.target.value)}
         />
         <input
           className="userinfo"
           type="email"
           placeholder="email"
           value={email}
-          onChange={(event)=>setEmail(event.target.value)}
+          onChange={(event) => setEmail(event.target.value)}
         />
         <input type="submit" />
       </form>
+      {users.map((oneUser,index)=>{
+        const{fullName,email}=oneUser
+        return  <div key={index} className="item">
+          <h2>{fullName}</h2>
+          <h2>{email}</h2>
+        </div>
+      })}
     </article>
   );
 };
