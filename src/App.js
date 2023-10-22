@@ -15,11 +15,12 @@ const App = () => {
     event.preventDefault();
 
     if (oneUser.fullName && oneUser.email && oneUser.age) {
-      const newUser = {
-        fullName: oneUser.fullName,
-        email: oneUser.email,
-        age: oneUser.age,
-      };
+      // const newUser = {
+      //   fullName: oneUser.fullName,
+      //   email: oneUser.email,
+      //   age: oneUser.age,
+      // };
+      const  newUser={...oneUser,id:new Date().getTime()}
       setUsers((users) => {
         return [...users, newUser];
       });
@@ -61,7 +62,7 @@ const App = () => {
       {users.map((oneUser, index) => {
         const { fullName, email, age } = oneUser;
         return (
-          <div key={index} className="item">
+            <div key={index} className="item">
             <h2>{fullName}</h2>
             <h2>{email}</h2>
             <h2>{age}</h2>
