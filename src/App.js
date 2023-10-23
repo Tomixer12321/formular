@@ -1,5 +1,19 @@
 import { useState } from "react";
 
+
+const info="email"
+
+const person={
+  fullName:"tomas kollar",
+  email:"tomix.klokar@gmail.com",
+}
+
+// person.age=40
+person[info]="red"
+console.log(person)
+
+
+
 const App = () => {
   const [oneUser, setOneUser] = useState({ fullName: "", email: "", age: "" });
   const [users, setUsers] = useState([]);
